@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+
+.review {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.review h2 {
+    color: dodgerblue;
+}
+
+.review p {
+    color: dimgray;
+}
+
+.review .author {
+    color: gray;
+    font-style: italic;
+}

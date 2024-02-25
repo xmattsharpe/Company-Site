@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Management and Services</title>
+    <link rel="stylesheet" href="pagethree.css">
+</head>
+
+ 
+</head>
+<body>
+
+    <header>
+        <h1>.NET Services & Memory Management</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+                    <!-- SOURCE:" https://devblogs.microsoft.com/dotnet/why-dotnet/ "-->
+
+                    
+    <section class="overview">
+        <h2>The .NET Runtime and Memory Management</h2>
+        <p>The .NET runtime provides automatic memory management via a garbage collector (GC). For any language, its memory management model is likely its most defining characteristic. This is true for .NET languages.</p>
+    </section>
+
+
+    <section class = "overview"> 
+        <h2> Heap Corruption Bugs</h2>
+        <p> Heap corruption bugs are notoriously hard to debug. It’s not uncommon that engineers spend many weeks if not months tracking these down. Many languages use a garbage collector as a user friendly way of eliminating these bugs because the GC ensures correct object lifetimes. Typically, GCs free memory in batches to operate efficiently. This incurs pauses that may not be suitable if you have very tight latency requirements, and the memory usage would be higher. GCs tend to have better memory locality and some are capable of compacting the heap making it less prone to memory fragmentation.</p>
+    </section>
+
+
+    
+    <img src="OIP (21).jpg" style = "margin-left: 600px" alt="">
+
+    <section class = "overview"> 
+        <h2> Garbage Collection Continued...</h2>
+        <p> NET has a self-tuning, tracing GC. It aims to deliver “hands off” operation in the general case while offering configuration options for more extreme workloads. The GC is the result of many years of investment, improving and learning from many kinds of workloads.
+
+            Bump pointer allocation — objects are allocated by incrementing an allocation pointer by the size needed (instead of finding space in segregated free blocks) so those allocated together tend to stay together. And since they are often accessed together this enables better memory locality which is important for performance.
+            
+            Generational collections — it’s extremely common that object lifetimes follow the generational hypothesis, that an object either lives for very long or dies very quickly. So it’s much more efficient for a GC to only collect memory occupied by ephemeral objects most of time it runs (called ephemeral GCs), instead of having to collect the whole heap (called full GCs) every time it runs.</p>
+    </section>
+    
+
+
+            <section class = "overview"> 
+                <h2> Compaction </h2>
+                <p>  the same amount of free space in larger and fewer chunks is more useful than in smaller and more chunks. During a compacting GC, survived objects are moved together so larger free spaces can be formed. This is harder to implement than a non-moving GC as it will need to update references to these moved objects. The .NET GC is dynamically tuned to perform compaction only when it determines the reclaimed memory is worth the GC cost. This means ephemeral collections are often compacting.</p>
+            </section>
+
+    <footer>
+        <p>&copy; 2024 .NET Framework Services. All rights reserved.</p>
+    </footer>
+</body>
+</html>
